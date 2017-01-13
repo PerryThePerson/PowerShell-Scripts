@@ -1,6 +1,10 @@
 ﻿#Import active directory module for running AD cmdlets
 Import-Module activedirectory
 $File = Read-Host "What file is being used to add new users?" 
+while((Test-Path $File) -eq $false)
+{
+    $File = Read-Host "File not found. Please enter a valid file." 
+}
 #Store the data from ADUsers.csv in the $ADUsers variable
 $ADUsers = Import-csv $File
 $UsersAttempted = 0 #Number of attempted account creations
