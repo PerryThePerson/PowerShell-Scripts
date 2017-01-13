@@ -12,7 +12,7 @@ $Confirmation = ""
 # has already been ran for the day
 $filecounter = 1 # used to determine if file version is in use 
 $date = Get-Date -format M-d-yyyy
-$filename = "C:\Users\Administrator\Desktop\Logs\Account Creation\AccountCreate_$date" + "v$counter.txt"
+$filename = "C:\Users\Administrator\Desktop\Logs\Account Creation\AccountCreate_$date" + "v$filecounter.txt"
 if((Test-Path $filename))
 {
 
@@ -85,8 +85,8 @@ foreach ($User in $ADUsers)
             $Confirmation = $Confirmation + "Account for $Username succesfully created `r`n"
     }
 }
-
-
+$CurrentDateTime = Get-Date -Format g
+Write-Output "Log file created on: $CurrentDateTime`r`n" | Add-Content $filename
 Write-Output "Accounts Attempted: $UsersAttempted `r" | Add-Content $filename
 Write-Output "Accounts Created: $UsersCreated `r" | Add-Content $filename
 Write-Output $Confirmation | Add-Content $filename
