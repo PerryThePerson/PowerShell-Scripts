@@ -11,16 +11,16 @@ $UsersAttempted = 0 #Number of attempted account creations
 $UsersCreated = 0 #Number of confirmed account creations
 $Confirmation = ""
 #Loop through each row containing user details in the CSV file 
-# used to create a file for account creation log
-# taking into consideration if the account creation script
-# has already been ran for the day
+#used to create a file for account creation log
+#taking into consideration if the account creation script
+#has already been ran for the day
 $filecounter = 1 # used to determine if file version is in use 
 $date = Get-Date -format M-d-yyyy
 $filename = "C:\Users\Administrator\Desktop\Logs\Account Creation\AccountCreate_$date" + "v$filecounter.txt"
 if((Test-Path $filename))
 {
 
-    while(Test-Path $filename)
+    while(Test-Path $filename) #allows logging if script is ran multiple times in a day while keeping track of time
     {
             
         $newfilename = $filename.Trim("v$filecounter.txt")
