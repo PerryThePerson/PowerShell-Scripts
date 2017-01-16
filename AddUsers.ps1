@@ -84,6 +84,7 @@ foreach ($User in $ADUsers)
             -Enabled $True `
             -DisplayName "$Lastname, $Firstname" `
             -Path $global:OU `
+            -ChangePasswordAtLogon $True `
             -AccountPassword (convertto-securestring $Password -AsPlainText -Force) 
             $UsersCreated = $UsersCreated + 1
             $Confirmation = $Confirmation + "Account for $Username succesfully created `r`n"
